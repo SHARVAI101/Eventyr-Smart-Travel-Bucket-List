@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'models/destination_model.dart';
+import 'searchpage.dart';
 
 class TempHome extends StatefulWidget {
   @override
@@ -47,35 +48,49 @@ class _TempHomeState extends State<TempHome> {
                     SizedBox(height: 40,),
 
                     Container(
-                      height: 45,
-                      margin: const EdgeInsets.only(right: 40, left: 20),
-                      child: TextField(
-                        decoration: InputDecoration(
-                          //border: InputBorder.none,
-                          filled: true,
-                          fillColor: Colors.grey[100],
-                          hintText: 'Search',
-                          contentPadding: EdgeInsets.only(left: 20, top: 2),
-                          suffixIcon: Icon(
-                            Icons.search,
-                            color: Colors.tealAccent[700],
-                          ),
-                          hintStyle: TextStyle(
-                            fontSize: 17.0,
-                            color: Colors.grey,
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
-                              color: Colors.grey[100],
-                              width: 2,
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(20.0),
-                            borderSide: BorderSide(
+//                      onPressed: (){
+//                        Navigator.push(
+//                          context,
+//                          MaterialPageRoute(builder: (context) => SearchPage()),
+//                        );
+//                      },
+                      child: Container(
+                        height: 45,
+                        margin: const EdgeInsets.only(right: 40, left: 20),
+                        child: TextField(
+                          onTap: (){
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => SearchPage()),
+                            );
+                          },
+                          decoration: InputDecoration(
+                            //border: InputBorder.none,
+                            filled: true,
+                            fillColor: Colors.grey[100],
+                            hintText: 'Search',
+                            contentPadding: EdgeInsets.only(left: 20, top: 2),
+                            suffixIcon: Icon(
+                              Icons.search,
                               color: Colors.tealAccent[700],
-                              width: 2,
+                            ),
+                            hintStyle: TextStyle(
+                              fontSize: 17.0,
+                              color: Colors.grey,
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.grey[100],
+                                width: 2,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                              borderSide: BorderSide(
+                                color: Colors.tealAccent[700],
+                                width: 2,
+                              ),
                             ),
                           ),
                         ),
