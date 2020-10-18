@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 class SearchPage extends StatefulWidget {
   @override
@@ -8,91 +9,223 @@ class _SearchPageState extends State<SearchPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: Column(
-          children: <Widget>[
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10.0, 40.0, 10.0, 0.0),
-              child: Row(
-                children: <Widget>[
-                  IconButton(
-                    icon: Icon(Icons.arrow_back_ios,
-                      size: 22,
+      body:Builder(
+        builder: (BuildContext context)
+        {
+          return Column(
+            children: <Widget>[
+              Padding(
+                padding: const EdgeInsets.fromLTRB(10.0, 40.0, 10.0, 0.0),
+                child: Row(
+                  children: <Widget>[
+                    IconButton(
+                      icon: Icon(Icons.arrow_back_ios,
+                        size: 22,
+                      ),
+                      color: Colors.tealAccent[700],
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                     ),
-                    color: Colors.tealAccent[700],
-                    onPressed: (){
-                      Navigator.pop(context);
-                    },
-                  ),
-                  SizedBox(width: 7,),
-                  Container(
-                    width: 260,
-                    //margin: EdgeInsets.fromLTRB(12.0,48.0,20.0,0.0),
-                    child: TextField(
-                      decoration: InputDecoration(
-                        //border: InputBorder.none,
+                    SizedBox(width: 7,),
+                    Container(
+                      width: 260,
+                      //margin: EdgeInsets.fromLTRB(12.0,48.0,20.0,0.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                          //border: InputBorder.none,
 
-                        filled: true,
-                        fillColor: Colors.grey[100],
-                        hintText: 'Search',
-                        contentPadding: EdgeInsets.only(left: 20, top: 2),
-                        suffixIcon: Icon(
-                          Icons.search,
-                          color: Colors.tealAccent[700],
-                        ),
-                        hintStyle: TextStyle(
-                          fontSize: 17.0,
-                          color: Colors.grey,
-                        ),
-                        enabledBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          borderSide: BorderSide(
-                            color: Colors.grey[100],
-                            width: 2,
+                          filled: true,
+                          fillColor: Colors.grey[100],
+                          hintText: 'Search',
+                          contentPadding: EdgeInsets.only(left: 20, top: 2),
+                          suffixIcon: Icon(
+                            Icons.search,
+                            color: Colors.tealAccent[700],
                           ),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(20.0),
-                          borderSide: BorderSide(
-                            color: Colors.grey[100],
-                            width: 2,
+                          hintStyle: TextStyle(
+                            fontSize: 17.0,
+                            color: Colors.grey,
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: BorderSide(
+                              color: Colors.grey[100],
+                              width: 2,
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20.0),
+                            borderSide: BorderSide(
+                              color: Colors.grey[100],
+                              width: 2,
+                            ),
                           ),
                         ),
                       ),
                     ),
-                  ),
-              ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20),
-              child: SizedBox(
-                height: 350,
-                child: ListView(
-                  scrollDirection: Axis.vertical,
-                  children: <Widget>[
-                    ListTile(
-                      title: Text('New York'),
-                      subtitle: Text('A strong shit'),
-                    ),
-                    ListTile(
-                      title: Text('Japan'),
-                      subtitle: Text('A strong shit'),
-                    ),
-                    ListTile(
-                      title: Text('Las Vegas'),
-                      subtitle: Text('A strong shit'),
-                    ),
-                    ListTile(
-                      title: Text('India'),
-                      subtitle: Text('A strong shit'),
-                    ),
                   ],
                 ),
               ),
-            ),
-          ],
-        ),
-
+              Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: SizedBox(
+                  height: 350,
+                  child: ListView(
+                    scrollDirection: Axis.vertical,
+                    children: <Widget>[
+                      ListTile(
+                        leading: Icon(
+                          Icons.location_on,
+                        ),
+                        title: Text('New York'),
+                        subtitle: Text('A strong shit'),
+                        trailing: Container(
+                          height: 35,
+                          width: 35,
+                          color: Colors.tealAccent[700],
+                          child: Center(
+                            child: IconButton(
+                              onPressed: () {
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                          Icons.airplanemode_active
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text('Added to Bucket List'),
+                                    ],
+                                  ),
+                                ));
+                              },
+                              padding: EdgeInsets.all(0),
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.location_on,
+                        ),
+                        title: Text('Japan'),
+                        subtitle: Text('A strong shit'),
+                        trailing: Container(
+                          height: 35,
+                          width: 35,
+                          color: Colors.tealAccent[700],
+                          child: Center(
+                            child: IconButton(
+                              onPressed: () {
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                          Icons.airplanemode_active
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text('Added to Bucket List'),
+                                    ],
+                                  ),
+                                ));
+                              },
+                              padding: EdgeInsets.all(0),
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.location_on,
+                        ),
+                        title: Text('Las Vegas'),
+                        subtitle: Text('A strong shit'),
+                        trailing: Container(
+                          height: 35,
+                          width: 35,
+                          color: Colors.tealAccent[700],
+                          child: Center(
+                            child: IconButton(
+                              onPressed: () {
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                          Icons.airplanemode_active
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text('Added to Bucket List'),
+                                    ],
+                                  ),
+                                ));
+                              },
+                              padding: EdgeInsets.all(0),
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(
+                          Icons.location_on,
+                        ),
+                        title: Text('India'),
+                        subtitle: Text('A strong shit'),
+                        trailing: Container(
+                          height: 35,
+                          width: 35,
+                          color: Colors.tealAccent[700],
+                          child: Center(
+                            child: IconButton(
+                              onPressed: () {
+                                Scaffold.of(context).showSnackBar(SnackBar(
+                                  content: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    children: <Widget>[
+                                      Icon(
+                                          Icons.airplanemode_active
+                                      ),
+                                      SizedBox(width: 10),
+                                      Text('Added to Bucket List'),
+                                    ],
+                                  ),
+                                ));
+                              },
+                              padding: EdgeInsets.all(0),
+                              icon: Icon(
+                                Icons.add,
+                                color: Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          );
+        }
+      )
     );
   }
 }

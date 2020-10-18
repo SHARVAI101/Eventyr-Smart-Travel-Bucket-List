@@ -30,6 +30,7 @@ dependencies:
   flat_icons_flutter: ^1.0.2
   google_fonts: ^1.1.0
   lite_rolling_switch: ^0.1.1
+  alphabet_list_scroll_view: ^1.0.6
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.3

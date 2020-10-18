@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:travel_bucket_list/adventure.dart';
+import 'package:travel_bucket_list/bucketlistpage.dart';
 import 'package:travel_bucket_list/countrypage.dart';
 import 'package:travel_bucket_list/findadventure.dart';
 import 'package:travel_bucket_list/temphome.dart';
@@ -18,7 +19,8 @@ class _HomeAppState extends State<HomeApp> {
     switch(currentIndex){
       case 0: return TempHome();
       case 1: return Adventure();
-      case 2: return CountryPage();
+      //case 2: return CountryPage();
+      case 2: return BucketListPage();
     }
   }
 

@@ -101,28 +101,24 @@ class _TempHomeState extends State<TempHome> {
                 ),
               ),
             ),
-            SizedBox(height: 22,), //30
+            SizedBox(height: 30,), //30
             Align(
               alignment: Alignment.bottomLeft,
               child: Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: Text(
                   'Trending Places',
-                  style: GoogleFonts.nunito(
-                    fontSize: 24,
+                  style: GoogleFonts.overpass(
+                    fontSize: 26,
                     fontWeight: FontWeight.w600,
                     letterSpacing: 0.5,
+                    //color: Colors.black54,
                   ),
-                  /*TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: 0.5,
-                  ),*/
                   textAlign: TextAlign.left,
                 ),
               ),
             ),
-            SizedBox(height: 5), //20 then 10
+            SizedBox(height: 20), //20 then 10
             SizedBox(
               height: 268,
               child: ListView.builder(
@@ -192,49 +188,72 @@ class _TempHomeState extends State<TempHome> {
                               children: <Widget>[
                                 ClipRRect(
                                   borderRadius: BorderRadius.circular(15.0),
-                                  child: Image(
-                                    height: 180.0,
-                                    width: 180.0,
-                                    //image: AssetImage(destination.imageUrl),
-                                    image: AssetImage(destination.imageUrl),
-
-                                    fit: BoxFit.cover,
+                                  child: FlatButton(
+                                    padding: EdgeInsets.all(0),
+                                    onPressed: (){
+                                      showDialog(context: context , builder : (context){
+                                        return Container(
+                                          height: 250,
+                                          child: AlertDialog(
+                                            contentPadding: EdgeInsets.all(0.0),
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.all(Radius.circular(8.0))),
+                                            title: Column(
+                                                children:[
+                                                  Image.asset('assets/images/paris.jpg',
+                                                    width: double.infinity, height: 180, fit: BoxFit.cover,),
+                                                  SizedBox(height: 10),
+                                                  Text('Eiffel Tower, Paris'),
+                                                  SizedBox(height: 10),
+                                                ]
+                                            ),
+                                            content: Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              children: <Widget>[
+                                                Padding(
+                                                  padding: EdgeInsets.fromLTRB(10, 8, 10, 20),
+                                                  child: RaisedButton(
+                                                    onPressed: (){},
+                                                    child: Padding(
+                                                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                                                      child: Row(
+                                                        children: <Widget>[
+                                                          Icon(
+                                                            Icons.add,
+                                                            size: 26.0,
+                                                            color: Colors.white,
+                                                          ),
+                                                          SizedBox(width: 5,),
+                                                          Text(
+                                                            'Add to Bucket List',
+                                                            style: TextStyle(
+                                                              fontSize: 17,
+                                                              letterSpacing: 0.5,
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    textColor: Colors.white,
+                                                    color: Colors.tealAccent[700],
+                                                    padding: EdgeInsets.fromLTRB(12, 5, 12, 5),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        );
+                                      });
+                                    },
+                                    child: Image(
+                                      height: 180.0,
+                                      width: 180.0,
+                                      //image: AssetImage(destination.imageUrl),
+                                      image: AssetImage(destination.imageUrl),
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                 ),
-                                //                        Positioned(
-                                //                          left: 10.0,
-                                //                          bottom: 10.0,
-                                //                          child: Column(
-                                //                            crossAxisAlignment: CrossAxisAlignment.center,
-                                //                            mainAxisAlignment: MainAxisAlignment.center,
-                                //                            children: <Widget>[
-                                //                              Text(
-                                //                                'Paris',
-                                //                                textAlign: TextAlign.center,
-                                //                                style: TextStyle(
-                                //                                  color: Colors.white,
-                                //                                  fontSize: 24.0,
-                                //                                  fontWeight: FontWeight.w600,
-                                //                                  letterSpacing: 1,
-                                //                                ),
-                                //                              ),
-                                //                              Row(
-                                //                                children: <Widget>[
-                                ////                                  Icon(
-                                ////                                    FontAwesomeIcons.locationArrow,
-                                ////                                    size: 10.0,
-                                ////                                    color: Colors.white,
-                                ////                                  ),
-                                //                                  Text(' hie',
-                                //                                    style: TextStyle(
-                                //                                      color: Colors.white,
-                                //                                    ),
-                                //                                  ),
-                                //                                ],
-                                //
-                                //                              ),
-                                //                            ],),
-                                //                        )
                               ],
                             ),
                           ),
@@ -244,95 +263,7 @@ class _TempHomeState extends State<TempHome> {
                   }
               ),
             ),
-            SizedBox(height: 0),
-            RaisedButton(
-              child: Text(
-                'Open Modal',
-              ),
-              onPressed: (){
-                showDialog(context: context , builder : (context){
-                  return Container(
-                    height: 250,
-                    child: AlertDialog(
-                      contentPadding: EdgeInsets.all(0.0),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.all(Radius.circular(8.0))),
-                      title: Column(
-                          children:[
-                            Image.asset('assets/images/paris.jpg',
-                              width: double.infinity, height: 180, fit: BoxFit.cover,),
-                            SizedBox(height: 10),
-                            Text('Eiffel Tower, Paris'),
-                            SizedBox(height: 10),
-                          ]
-                      ),
-
-                      //content: Text('Add to the Bucket list'),
-//                        actions: <Widget>[
-//                          ButtonBar(
-//                            alignment: MainAxisAlignment.center,
-//                            children: <Widget>[
-//                              RaisedButton(
-//                                onPressed: (){},
-//                                child: Text(
-//                              'Add to Bucket List',
-//                                style: TextStyle(
-//                                  fontSize: 16,
-//                                ),
-//                              ),
-//                              textColor: Colors.white,
-//                              color: Colors.tealAccent[700],
-//                              padding: EdgeInsets.fromLTRB(12, 12, 12, 12),
-//                              ),
-//                          ]
-//                          ),
-////                        FlatButton(
-////                          child: Text("Cancel"),
-////                          onPressed: () {},
-////                        ),
-//                        ],
-                      content: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Padding(
-                            padding: EdgeInsets.fromLTRB(10, 8, 10, 20),
-                            child: RaisedButton(
-                              onPressed: (){},
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 10.0, right: 10.0),
-                                child: Row(
-                                  children: <Widget>[
-                                    Icon(
-                                      Icons.add,
-                                      size: 26.0,
-                                      color: Colors.white,
-                                    ),
-                                    SizedBox(width: 5,),
-                                    Text(
-                                      'Add to Bucket List',
-                                      style: TextStyle(
-                                        fontSize: 17,
-                                        letterSpacing: 0.5,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              textColor: Colors.white,
-                              color: Colors.tealAccent[700],
-                              padding: EdgeInsets.fromLTRB(12, 5, 12, 5),
-                            ),
-                          ),
-                        ],
-                      ),
-
-                    ),
-                  );
-                });
-              },
-            ),
           ],
-
         ),
       ),
     );
