@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -11,6 +12,7 @@ class CountryPage extends StatefulWidget {
 }
 
 class _CountryPageState extends State<CountryPage> {
+  int _value = 1;
   @override
   /*void initState() {
     super.initState();
@@ -111,7 +113,7 @@ class _CountryPageState extends State<CountryPage> {
               ),
               SizedBox(height: 15,),
               Container(
-                height: 600,
+                height: 200,
                 child: ListView.builder(
                   padding: EdgeInsets.all(0),
                   scrollDirection: Axis.vertical,
@@ -122,7 +124,7 @@ class _CountryPageState extends State<CountryPage> {
                     return Column(
                       children: [
                         SizedBox(
-                          height: 110,
+                          height: 111,
                           width: double.infinity,
                           child: RaisedButton(
                             padding: EdgeInsets.all(0),
@@ -132,6 +134,7 @@ class _CountryPageState extends State<CountryPage> {
                                 borderRadius: new BorderRadius.circular(20)
                             ),
                             child: Row(
+//                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 ClipRRect(
                                   borderRadius: BorderRadius.only(topLeft: Radius.circular(20), bottomLeft: Radius.circular(20),),
@@ -145,8 +148,9 @@ class _CountryPageState extends State<CountryPage> {
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.fromLTRB(10,15,10,15),
+//                                    padding: const EdgeInsets.fromLTRB(0,0,0,0),
                                     child: Column(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
                                         Column(
                                           children: [
@@ -159,7 +163,7 @@ class _CountryPageState extends State<CountryPage> {
                                                 ),
                                               ),
                                             ),
-                                            SizedBox(height: 1,),
+                                            SizedBox(width: 10),
                                             Align(
                                               alignment: Alignment.bottomLeft,
                                               child: Text(
@@ -173,7 +177,6 @@ class _CountryPageState extends State<CountryPage> {
                                             ),
                                           ],
                                         ),
-
                                         //SizedBox(height: 15,),
                                         Align(
                                           alignment: Alignment.bottomLeft,
@@ -197,7 +200,91 @@ class _CountryPageState extends State<CountryPage> {
                                       ],
                                     ),
                                   ),
-                                )
+                                ),
+                                Container(
+                                  width:145,
+                                  height:100,
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(right: 10.0),
+                                    child: DropdownButton(
+                                        isExpanded: true,
+                                      icon: Icon(
+                                        FontAwesomeIcons.ellipsisH,
+                                        color: Colors.tealAccent[700],
+                                        ),
+                                        iconSize: 20,
+                                        style: TextStyle(color: Colors.deepPurple),
+
+                                      items: [
+                                        DropdownMenuItem(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Icon(
+                                                Icons.check_box,
+                                                size: 20,
+                                                color: Colors.tealAccent[700],
+                                              ),
+                                              SizedBox(width: 8),
+                                              Text(
+                                                  "Visited",
+                                                style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          value: 1,
+                                        ),
+                                        DropdownMenuItem(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Icon(
+                                                Icons.pin_drop,
+                                                size: 20,
+                                                color: Colors.tealAccent[700],
+                                              ),
+                                              SizedBox(width: 8),
+                                              Text(
+                                                "Open in Map",
+                                                style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          value: 2,
+                                        ),
+                                        DropdownMenuItem(
+                                          child: Row(
+                                            children: <Widget>[
+                                              Icon(
+                                                Icons.delete,
+                                                size: 20,
+                                                color: Colors.tealAccent[700],
+                                              ),
+                                              SizedBox(width: 8),
+                                              Text(
+                                                "Delete",
+                                                style: TextStyle(
+                                                  color: Colors.grey,
+                                                  fontSize: 15,
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                          value: 3,
+                                        ),
+                                      ],
+                                      onChanged: (value) {
+                                        setState(() {
+                                          _value = value;
+                                        });
+                                      }
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ),
