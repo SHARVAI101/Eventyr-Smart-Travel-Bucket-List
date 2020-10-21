@@ -1,12 +1,57 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
 class SearchPage extends StatefulWidget {
   @override
   _SearchPageState createState() => _SearchPageState();
 }
 
 class _SearchPageState extends State<SearchPage> {
+
+  var resultlist=[];
+  final myController = TextEditingController();
+
+  textListener() {
+    String searchquery= Uri.encodeFull(myController.text);
+    Future<void> autocomplete() async {
+      final response = await http.post(
+        "https://api.locationiq.com/v1/autocomplete.php?key=3e99caae894da7&q=${searchquery}&format=json",
+      );
+      print("called");
+      var decodedResponse = json.decode(response.body);
+      print(response.body);
+      resultlist=[];
+      for(int i=0;i<decodedResponse.length;i++){
+        var temp=[];
+        temp.add(decodedResponse[i]["display_place"].toString());
+        temp.add(decodedResponse[i]["address"]["country"].toString());
+        resultlist.add(temp);
+        //print("place name-> "+decodedResponse[i]["display_place"].toString());
+        //print("country-> "+decodedResponse[i]["address"]["country"].toString());
+      }
+
+      setState(() {
+        print(resultlist);
+      });
+    }
+    autocomplete();
+    //print("Current Text is ${myController.text}");
+  }
+
   @override
+  void dispose() {
+    super.dispose();
+    myController.dispose();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    myController.addListener(textListener);
+  }
+
   Widget build(BuildContext context) {
     return Scaffold(
       body:Builder(
@@ -32,9 +77,12 @@ class _SearchPageState extends State<SearchPage> {
                       width: 260,
                       //margin: EdgeInsets.fromLTRB(12.0,48.0,20.0,0.0),
                       child: TextField(
+                        controller: myController,
+                        onChanged: (text) {
+                          print("Text $text");
+                        },
                         decoration: InputDecoration(
                           //border: InputBorder.none,
-
                           filled: true,
                           fillColor: Colors.grey[100],
                           hintText: 'Search',
@@ -70,16 +118,16 @@ class _SearchPageState extends State<SearchPage> {
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: SizedBox(
-                  height: 350,
+                  height: 650,
                   child: ListView(
                     scrollDirection: Axis.vertical,
-                    children: <Widget>[
-                      ListTile(
+                    children: resultlist.map((i){
+                      return ListTile(
                         leading: Icon(
                           Icons.location_on,
                         ),
-                        title: Text('New York'),
-                        subtitle: Text('A strong shit'),
+                        title: Text(i[0]),
+                        subtitle: Text(i[1]),
                         trailing: Container(
                           height: 35,
                           width: 35,
@@ -109,116 +157,8 @@ class _SearchPageState extends State<SearchPage> {
                             ),
                           ),
                         ),
-                      ),
-                      ListTile(
-                        leading: Icon(
-                          Icons.location_on,
-                        ),
-                        title: Text('Japan'),
-                        subtitle: Text('A strong shit'),
-                        trailing: Container(
-                          height: 35,
-                          width: 35,
-                          color: Colors.tealAccent[700],
-                          child: Center(
-                            child: IconButton(
-                              onPressed: () {
-                                Scaffold.of(context).showSnackBar(SnackBar(
-                                  content: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                          Icons.airplanemode_active
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text('Added to Bucket List'),
-                                    ],
-                                  ),
-                                ));
-                              },
-                              padding: EdgeInsets.all(0),
-                              icon: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      ListTile(
-                        leading: Icon(
-                          Icons.location_on,
-                        ),
-                        title: Text('Las Vegas'),
-                        subtitle: Text('A strong shit'),
-                        trailing: Container(
-                          height: 35,
-                          width: 35,
-                          color: Colors.tealAccent[700],
-                          child: Center(
-                            child: IconButton(
-                              onPressed: () {
-                                Scaffold.of(context).showSnackBar(SnackBar(
-                                  content: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                          Icons.airplanemode_active
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text('Added to Bucket List'),
-                                    ],
-                                  ),
-                                ));
-                              },
-                              padding: EdgeInsets.all(0),
-                              icon: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      ListTile(
-                        leading: Icon(
-                          Icons.location_on,
-                        ),
-                        title: Text('India'),
-                        subtitle: Text('A strong shit'),
-                        trailing: Container(
-                          height: 35,
-                          width: 35,
-                          color: Colors.tealAccent[700],
-                          child: Center(
-                            child: IconButton(
-                              onPressed: () {
-                                Scaffold.of(context).showSnackBar(SnackBar(
-                                  content: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: <Widget>[
-                                      Icon(
-                                          Icons.airplanemode_active
-                                      ),
-                                      SizedBox(width: 10),
-                                      Text('Added to Bucket List'),
-                                    ],
-                                  ),
-                                ));
-                              },
-                              padding: EdgeInsets.all(0),
-                              icon: Icon(
-                                Icons.add,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
+                      );
+                    }).toList(),
                   ),
                 ),
               ),

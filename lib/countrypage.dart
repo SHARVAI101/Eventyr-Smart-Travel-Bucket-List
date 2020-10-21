@@ -90,21 +90,16 @@ class _CountryPageState extends State<CountryPage> {
                     child: SizedBox(
                       // width: 120,
                       // width: 20,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          /*Text(
-                            'Open Map',
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                color: Colors.blueGrey,
-                                fontSize: 18
-                            ),
-                          ),*/
-                          Icon(
+                      child: PopupMenuButton<int>(
+                          icon: Icon(
                             Icons.menu,
                             color: Colors.blueGrey,
-                          )
+                          ),
+                        itemBuilder: (context) => [
+                          PopupMenuItem(
+                            value: 1,
+                            child: Text("First"),
+                          ),
                         ],
                       ),
                     ),
@@ -113,7 +108,7 @@ class _CountryPageState extends State<CountryPage> {
               ),
               SizedBox(height: 15,),
               Container(
-                height: 200,
+                height: 600,
                 child: ListView.builder(
                   padding: EdgeInsets.all(0),
                   scrollDirection: Axis.vertical,
@@ -148,7 +143,6 @@ class _CountryPageState extends State<CountryPage> {
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.fromLTRB(10,15,10,15),
-//                                    padding: const EdgeInsets.fromLTRB(0,0,0,0),
                                     child: Column(
                                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                       children: [
@@ -201,88 +195,77 @@ class _CountryPageState extends State<CountryPage> {
                                     ),
                                   ),
                                 ),
-                                Container(
-                                  width:145,
-                                  height:100,
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(right: 10.0),
-                                    child: DropdownButton(
-                                        isExpanded: true,
-                                      icon: Icon(
-                                        FontAwesomeIcons.ellipsisH,
-                                        color: Colors.tealAccent[700],
-                                        ),
-                                        iconSize: 20,
-                                        style: TextStyle(color: Colors.deepPurple),
-
-                                      items: [
-                                        DropdownMenuItem(
-                                          child: Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.check_box,
-                                                size: 20,
-                                                color: Colors.tealAccent[700],
-                                              ),
-                                              SizedBox(width: 8),
-                                              Text(
-                                                  "Visited",
-                                                style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          value: 1,
-                                        ),
-                                        DropdownMenuItem(
-                                          child: Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.pin_drop,
-                                                size: 20,
-                                                color: Colors.tealAccent[700],
-                                              ),
-                                              SizedBox(width: 8),
-                                              Text(
-                                                "Open in Map",
-                                                style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          value: 2,
-                                        ),
-                                        DropdownMenuItem(
-                                          child: Row(
-                                            children: <Widget>[
-                                              Icon(
-                                                Icons.delete,
-                                                size: 20,
-                                                color: Colors.tealAccent[700],
-                                              ),
-                                              SizedBox(width: 8),
-                                              Text(
-                                                "Delete",
-                                                style: TextStyle(
-                                                  color: Colors.grey,
-                                                  fontSize: 15,
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                          value: 3,
-                                        ),
-                                      ],
-                                      onChanged: (value) {
-                                        setState(() {
-                                          _value = value;
-                                        });
-                                      }
+                                Padding(
+                                  padding: const EdgeInsets.only(right: 0.0),
+                                  child:PopupMenuButton<int>(
+                                    icon: Icon(
+                                      FontAwesomeIcons.ellipsisH,
+                                      color: Colors.tealAccent[700],
                                     ),
+
+                                    itemBuilder: (context) => [
+                                      PopupMenuItem(
+                                        value: 1,
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.check_box,
+                                              size: 20,
+                                              color: Colors.tealAccent[700],
+                                            ),
+                                            SizedBox(width: 8),
+                                            Text(
+                                              "Visited",
+                                              style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      PopupMenuItem(
+                                        value: 2,
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.pin_drop,
+                                              size: 20,
+                                              color: Colors.tealAccent[700],
+                                            ),
+                                            SizedBox(width: 8),
+                                            Text(
+                                              "Open in Map",
+                                              style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                      PopupMenuItem(
+                                        value: 3,
+                                        child: Row(
+                                          children: <Widget>[
+                                            Icon(
+                                              Icons.delete,
+                                              size: 20,
+                                              color: Colors.tealAccent[700],
+                                            ),
+                                            SizedBox(width: 8),
+                                            Text(
+                                              "Delete",
+                                              style: TextStyle(
+                                                color: Colors.grey,
+                                                fontSize: 15,
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                    //onSelected:(){},
                                   ),
                                 ),
                               ],

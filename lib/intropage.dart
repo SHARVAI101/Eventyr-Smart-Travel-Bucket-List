@@ -63,7 +63,7 @@ class _IntroPageState extends State<IntroPage> {
                             child: RaisedButton(
                               onPressed: (){
                                 //Get.off(FindAdventure());
-                                Navigator.push(
+                                Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(builder: (context) => HomeApp()),
                                 );
