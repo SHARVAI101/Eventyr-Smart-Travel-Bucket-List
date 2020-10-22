@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:alphabet_list_scroll_view/alphabet_list_scroll_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:travel_bucket_list/countrypage.dart';
+import 'package:travel_bucket_list/globalvars.dart';
 
 class BucketListPage extends StatefulWidget {
   @override
@@ -11,29 +12,90 @@ class BucketListPage extends StatefulWidget {
 }
 
 class _BucketListPageState extends State<BucketListPage> {
-  List<String> countries = ["India","Japan","Switzerland","USA","Solvenia"];
-  List<String> country_images = ["India.jpg","Japan.jpg","Slovenia.jpg","Switzerland.jpg","USA.jpg"];
+  List<String> countries = [];
+  List<String> country_images = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    for(int i = 0; i < GlobalVariables.bucketlist.length ; i++)
+    {
+      countries.add(GlobalVariables.bucketlist[i][1]);
+      country_images.add(GlobalVariables.bucketlist[i][3]);
+    }
+    setState(() {
+      countries=countries.toSet().toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          'BUCKET LIST',
-          style: GoogleFonts.nunito(
-            fontSize: 30,
-            color: Colors.tealAccent[700],
-          ),
-        ),
-        //centerTitle: true,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.transparent,
-      ),
+//      appBar: AppBar(
+//        elevation: 0,
+//        title: Text(
+//          'BUCKET LIST',
+//          style: GoogleFonts.nunito(
+//            fontSize: 30,
+//            color: Colors.tealAccent[700],
+//            fontWeight: FontWeight.bold,
+//          ),
+//        ),
+//        //centerTitle: true,
+//        automaticallyImplyLeading: false,
+//        backgroundColor: Colors.transparent,
+//      ),
       body: Column(
         children: <Widget>[
-          SizedBox(height: 30,),
+          SizedBox(height: 45,),
+          Text(
+            'BUCKET LIST',
+            style: GoogleFonts.reemKufi(
+              fontSize: 40,
+              color: Colors.tealAccent[700],
+              //fontWeight: FontWeight.bold,
+            ),
+          ),
+          Text(
+            'Your bucket list organized countrywise',
+            textAlign: TextAlign.center,
+            style: GoogleFonts.openSans(
+              fontSize: 16,
+              color: Colors.grey,
+            ),
+          ),
+          /*Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'BUCKET LIST',
+                style: GoogleFonts.reemKufi(
+                  fontSize: 40,
+                  color: Colors.tealAccent[700],
+//                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ),
+          SizedBox(height: 2),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Your bucket list organized countrywise',
+                style: GoogleFonts.openSans(
+                  fontSize: 18,
+                  color: Colors.grey,
+                ),
+              ),
+            ),
+          ),*/
+          SizedBox(height: 25,),
           Container(
-            height: 578,
+            height: 520,
             child: AlphabetListScrollView(
               strList: countries,
               highlightTextStyle: TextStyle(
@@ -55,8 +117,8 @@ class _BucketListPageState extends State<BucketListPage> {
                       child: Container(
                         decoration: BoxDecoration(
                           image: DecorationImage(
-                            image: AssetImage("assets/images/" +country_images[index]),
-                            fit: BoxFit.fitWidth,
+                            image: AssetImage(country_images[index]),
+                            fit: BoxFit.fill,
                             alignment: Alignment.topCenter,
                             //colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.7), BlendMode.dstATop),
                           ),

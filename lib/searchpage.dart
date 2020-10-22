@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'package:travel_bucket_list/globalvars.dart';
+
 class SearchPage extends StatefulWidget {
   @override
   _SearchPageState createState() => _SearchPageState();
@@ -135,6 +137,8 @@ class _SearchPageState extends State<SearchPage> {
                           child: Center(
                             child: IconButton(
                               onPressed: () {
+                                var place = [i[0], i[1], 0,"assets/images/India.jpg"];
+                                GlobalVariables.bucketlist.add(place);
                                 Scaffold.of(context).showSnackBar(SnackBar(
                                   content: Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
