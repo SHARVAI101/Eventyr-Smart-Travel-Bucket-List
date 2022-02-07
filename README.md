@@ -1,6 +1,8 @@
-# travel_bucket_list
+![Eventyr Banner](feature%20background.png)
 
-A new Flutter application.
+<h2 align="center">Eventyr: Your Smart Travel Bucket List</h2>
+
+<p align="center"><img src="https://img.shields.io/apm/l/vim-mode" /> <img src="https://img.shields.io/badge/-Flutter-02569B?logo=flutter&logoColor=white&style=flat" /> <img src="https://img.shields.io/badge/-AWS%20Lambda-232F3E?logo=amazon-aws&logoColor=white&style=flat" /> <img src="https://img.shields.io/github/repo-size/SHARVAI101/Travel-bucket-list-app?style=flat"/> </p>
 
 ## Getting Started
 
