@@ -4,15 +4,24 @@
 
 <p align="center"><img src="https://img.shields.io/apm/l/vim-mode" /> <img src="https://img.shields.io/badge/-Flutter-02569B?logo=flutter&logoColor=white&style=flat" /> <img src="https://img.shields.io/badge/-AWS%20Lambda-232F3E?logo=amazon-aws&logoColor=white&style=flat" /> <img src="https://img.shields.io/github/repo-size/SHARVAI101/Travel-bucket-list-app?style=flat"/> </p>
 
-## Getting Started
+Eventyr is a smart travel bucket list android app developed using Flutter and AWS Lambda.
 
-This project is a starting point for a Flutter application.
+## Screenshots
 
-A few resources to get you started if this is your first Flutter project:
+### Home Page
+<img src="screenshots/1.jpg" style="height:600px"/>&nbsp;&nbsp;&nbsp; <img src="screenshots/2.jpg" style="height:600px"/>&nbsp;&nbsp;&nbsp;  <img src="screenshots/9.jpg" style="height:600px"/>
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Search Page
+<img src="screenshots/3.jpg" style="height:600px"/> 
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Map Page (With Light and Dark Modes)
+<img src="screenshots/4.jpg" style="height:600px"/>&nbsp;&nbsp;&nbsp; <img src="screenshots/5.jpg" style="height:600px"/> 
+
+<img src="screenshots/6.jpg" style="height:600px"/>&nbsp;&nbsp;&nbsp; <img src="screenshots/7.jpg" style="height:600px"/> 
+
+### Bucket List Page
+
+<img src="screenshots/8.jpg" style="height:600px"/>&nbsp;&nbsp;&nbsp;  <img src="screenshots/14.jpg" style="height:600px"/> 
+
+### Country Pages
+<img src="screenshots/10.jpg" style="height:600px"/>&nbsp;&nbsp;&nbsp; <img src="screenshots/13.jpg" style="height:600px"/> 
